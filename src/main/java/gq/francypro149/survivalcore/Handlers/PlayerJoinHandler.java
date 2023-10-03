@@ -28,5 +28,11 @@ public class PlayerJoinHandler implements Listener {
         String subtitle = ColorUtil.getColor(LegacyComponentSerializer.legacyAmpersand().serialize(SubTitles));
 
         audience.showTitle(Title.title(Component.text(title), Component.text(subtitle)));
+
+        //JoinMessage
+        Component Joins = miniMessage.deserialize("<gradient:#116903:#63C754><bold>SURVIVAL</bold></gradient> <gradient:#669160:#B0E6A8>"+p.getName()+" è entrato nel server!</gradient>");
+        String join = ColorUtil.getColor(LegacyComponentSerializer.legacyAmpersand().serialize(Joins));
+
+        e.setJoinMessage(join);
     }
 }
