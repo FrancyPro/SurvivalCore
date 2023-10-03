@@ -1,0 +1,4 @@
+name: SurvivalCore
+version: '${version}'
+main: gq.francypro149.survivalcore.SurvivalCore
+api-version: 1.20
