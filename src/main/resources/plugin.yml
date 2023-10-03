@@ -1,4 +1,8 @@
 name: SurvivalCore
+authors: [FrancyPro]
 version: '${version}'
 main: gq.francypro149.survivalcore.SurvivalCore
 api-version: 1.20
+commands:
+  survival:
+    aliases: []
