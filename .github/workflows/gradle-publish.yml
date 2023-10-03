@@ -14,18 +14,16 @@ jobs:
       - name: Java setup
         uses: actions/setup-java@v2
         with:
-          java-version: '17'
-          distribution: 'corretto'
+          distribution: "zulu"
+          java-version: 17
           cache: "gradle"
       - name: Set outputs
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: Build
         run: chmod +x ./gradlew && ./gradlew setupCiWorkspace && ./gradlew shadowJar
-      - name: Rename build artifacts
-        run: mv build/libs/SurvivalCore.jar
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: SurvivalCore
+          name: FDPClient
           path: build/libs/SurvivalCore.jar
