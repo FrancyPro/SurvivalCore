@@ -12,6 +12,8 @@ public final class Main extends JavaPlugin {
         plugin = this;
 
         registerCommands();
+
+        saveDefaultConfig();
     }
 
     @Override
