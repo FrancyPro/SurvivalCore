@@ -21,7 +21,7 @@ jobs:
         id: vars
         run: echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
       - name: Build
-        run: ./gradlew shadowJar
+        run: chmod 777 ./gradlew && ./gradlew shadowJar
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
