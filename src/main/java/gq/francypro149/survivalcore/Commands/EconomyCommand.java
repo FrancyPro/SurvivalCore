@@ -1,6 +1,7 @@
 package gq.francypro149.survivalcore.Commands;
 
 import gq.francypro149.survivalcore.Economy.VaultHook;
+import gq.francypro149.survivalcore.Utils.ColorUtil;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -17,7 +18,7 @@ public final class EconomyCommand implements CommandExecutor {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
 
         if (!(sender instanceof Player)) {
-            sender.sendMessage("Only players can use this command!");
+            sender.sendMessage(ColorUtil.getColor("&cNon puoi eseguire questo comando dalla console!"));
 
             return true;
         }
@@ -31,6 +32,11 @@ public final class EconomyCommand implements CommandExecutor {
 
         OfflinePlayer target = Bukkit.getOfflinePlayer(playerName);
         Audience audience = Audience.audience((Audience) sender);
+
+        if(!sender.hasPermission("survival.admin.economy")) {
+            audience.sendMessage(MiniMessage.miniMessage().deserialize("<gradient:#116903:#63C754><bold>SURVIVAL</bold></gradient> <gradient:#669160:#B0E6A8>Non puoi eseguire questo comando!</gradient>"));
+            return true;
+        }
 
         if (!target.hasPlayedBefore()) {
             audience.sendMessage(MiniMessage.miniMessage().deserialize("<gradient:#116903:#63C754><bold>SURVIVAL</bold></gradient> <gradient:#669160:#B0E6A8>"+playerName+" non è mai entrato nel server!</gradient>"));

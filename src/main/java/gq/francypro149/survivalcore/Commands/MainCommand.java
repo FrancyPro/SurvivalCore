@@ -25,6 +25,11 @@ public class MainCommand implements CommandExecutor {
             audience.sendMessage(MiniMessage.miniMessage().deserialize("<gradient:#116903:#63C754><bold>SURVIVAL</bold></gradient> <gradient:#669160:#B0E6A8>"+Main.plugin.getDescription().getName()+" made by "+Main.plugin.getDescription().getAuthors().get(0)+" v"+Main.plugin.getDescription().getVersion()+"</gradient>"));
             return true;
         } else if (args.length == 1 && args[0].equalsIgnoreCase("setspawn")) {
+            if(!p.hasPermission("survival.admin.setspawn")) {
+                audience.sendMessage(MiniMessage.miniMessage().deserialize("<gradient:#116903:#63C754><bold>SURVIVAL</bold></gradient> <gradient:#669160:#B0E6A8>Non puoi eseguire questo comando!</gradient>"));
+                return true;
+            }
+
             SpawnUtil.setSpawn(p.getLocation());
             audience.sendMessage(MiniMessage.miniMessage().deserialize("<gradient:#116903:#63C754><bold>SURVIVAL</bold></gradient> <gradient:#669160:#B0E6A8>Hai settato lo spawn!</gradient>"));
         } else if (args.length == 1 && args[0].equalsIgnoreCase("spawn")) {
